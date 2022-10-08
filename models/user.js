@@ -1,4 +1,4 @@
-const { Schema, model, SchemaTypes } = require('mongoose');
+const { Schema, model, } = require('mongoose');
 const Joi = require('joi');
 const { handleSaveErrors } = require('../helpers')
 
@@ -21,10 +21,6 @@ const userSchema = new Schema({
         type: String,
         default: null,
     },
-    owner: {
-      type: SchemaTypes.ObjectId,
-      ref: 'user',
-    }
 }, {versionKey:false, timestamps:true});
 
 userSchema.post('save', handleSaveErrors);
