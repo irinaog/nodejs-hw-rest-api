@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const jwb = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const { RequestError } = require("../../helpers");
@@ -19,9 +19,9 @@ const login = async (req, res) => {
     const payload = {
         id:user._id
     }
-    const token = jwb.sign(payload,SECRET_KEY,{expiresIn:'1h'});
+    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' });
     res.status(201).json({
-        token: token,
+        token,
         user: {
             email: email,
             subscription: "starter"
