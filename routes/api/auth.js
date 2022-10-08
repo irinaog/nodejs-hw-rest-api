@@ -7,6 +7,6 @@ const {authSchema} = require('../../models')
 
 router.post('/users/signup', validateBody(authSchema), ctrlWrapper(ctrl.register));
 router.post('/users/login', validateBody(authSchema), ctrlWrapper(ctrl.login));
-router.post('/users/logout', authenticate, ctrlWrapper(ctrl.logout));
+router.get('/users/logout', authenticate, ctrlWrapper(ctrl.logout));
 router.get('/users/current', authenticate, ctrlWrapper(ctrl.getCurrent))
 module.exports = router;
