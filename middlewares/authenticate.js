@@ -8,8 +8,8 @@ const authenticate = async (req, res, next) => {
     try {
         const { authorization = '' } = req.headers;
         const [bearer  , token ] = authorization.split(" ");
-        if (bearer !== 'Bearer') {
-            throw RequestError(401, "Not authorized 01")
+        if (bearer !== 'Bearer'||!token) {
+            throw RequestError(401, "Not authorized")
         }
         try {
             const { id } = jwt.verify(token, SECRET_KEY);
@@ -21,7 +21,7 @@ const authenticate = async (req, res, next) => {
             next()
         } catch (error) {
             console.log(error.message)
-            throw RequestError(401, "Not authorized 02")
+            throw RequestError(401, "Not authorized")
         }
     } catch (error) {
         next(error)
