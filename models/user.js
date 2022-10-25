@@ -23,6 +23,10 @@ const userSchema = new Schema({
         type: String,
         default: null,
     },
+    avatarUrl: {
+        type: String,
+        required:true,
+    }
 }, {versionKey:false, timestamps:true});
 
 userSchema.post('save', handleSaveErrors);
