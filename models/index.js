@@ -1,7 +1,7 @@
 const { Contact, schemas } = require("./contacts");
-const { User, authSchema, updateSubscriptionSchema } = require('./user');
+const { User, authSchema, updateSubscriptionSchema,verifyEmail } = require('./user');
 
 module.exports = {
     Contact, schemas,
-    User, authSchema, updateSubscriptionSchema
+    User, authSchema, updateSubscriptionSchema, verifyEmail
 }

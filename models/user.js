@@ -48,7 +48,11 @@ const updateSubscriptionSchema = Joi.object({
   subscription: Joi.string().valid(...subscription),
 });
 
+const verifyEmail = Joi.object({
+    email:Joi.string().required(),
+})
+
 
 const User = model('user', userSchema);
 
-module.exports ={User, authSchema, updateSubscriptionSchema}
+module.exports ={User, authSchema, updateSubscriptionSchema, verifyEmail}
