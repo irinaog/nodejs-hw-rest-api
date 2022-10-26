@@ -5,10 +5,10 @@ const resendVerify = async (req, res) => {
     const { email } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-       throw RequestError(400) 
+       throw RequestError(400, "User not found") 
     }
     if (user.verify) {
-    res.statue(400).json({ message: "Verification has already been passed"})
+    res.status(400).json({ message: "Verification has already been passed"})
 }
 
     const mail = createVerifyEmail(email, user.verificationToken)
